@@ -2,7 +2,7 @@
 import 'source-map-support/register';
 //import * as cdk from 'aws-cdk-lib';
 import * as cdk from '@aws-cdk/core';
-import { sessionManagerStackAndKey, sessionManagerStack } from '../lib/kms_ssm-stack';
+import { sessionManagerStackAndKey, sessionManagerStack } from '../lib/ssm_stack-stack';
 
 const app = new cdk.App();
 
@@ -11,13 +11,13 @@ const smkmsStack = new sessionManagerStackAndKey(app, 'SessionManagerStackAndKey
   stackName: 'SessionManagerStackAndKey',
   description: 'This stack is used to deploy Session Manager and KMS Key to encrypt sessions.',
   env: {
-    region: 'us-east-1',
-    account: '683578897984',
+    region: process.env.CDK_DEFAULT_REGION,
+    account: process.env.CDK_DEFAULT_ACCOUNT,
   },
 });
 
 //Other Accounts Stack to deploy Session Manager and Policies.
-const prodAcct = { account: '683578897984', region: 'us-east-1'};
+const prodAcct = { account: 'AWS_ACCOUNT_ID', region: 'us-east-1'};
 
 new sessionManagerStack(app, 'SessionManagerStack', {
   kmskey : smkmsStack.kmskey,
