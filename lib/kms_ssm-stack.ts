@@ -17,7 +17,7 @@ import { publicEncrypt } from 'crypto';
 import { assert } from 'console';
 
 
-//===========================1st Stack for deployment into Other Accounts ====================//
+//===========================1st Stack for deployment into Master Accounts ====================//
 
 export class sessionManagerStackAndKey extends cdk.Stack {
 
