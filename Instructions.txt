@@ -1,0 +1,22 @@
+Deliverables:
+Task 1: Session Manager Pre-Requisite - Permissions
+1. Using CDK;
+    - In the Master account, create a Customer Managed Key policy. 
+    - In the Master account, create a customer managed KMS key, and attach the CMK policy.
+    - In all accounts, create a custom Instance Profile Role policy with EC2 permissions for Session Manager, KMS key, and CloudWatch Logs.
+    - In all accounts, create the session manager role, and attach the Instance Profile Role policy.
+    * In all accounts, create instance profile, and attach the Instance Profile role to it.
+---------------------
+Task 2: Session Manager Pre-requisite - Log Destination
+2. * Using CDK, create CloudWatch LogGroup for session logging. 
+---------------------
+Task 3: Session Manager SetUp
+3. * Using CDK, update the Session Manager preferences in the SessionManagerRunShell.json document in all accounts. Configure;
+    - Streaming session data using CloudWatch logs loggroup.
+    - Turn on KMS key encryption of session data.
+    - Specify an idle session timeout value (idleSessionDuration). 
+    - Specify maximum session duration (maxSessionDuration).
+    - Enable configurable shell profile.
+    - Enable 'runasEnabled' for Linux & Mac-OS managed nodes. 
+---------------------
+4. Deploy and test EC2 instance in all accounts can be accessed with session manager, and session enrypted and logged in ClouWatch LogGroup.
